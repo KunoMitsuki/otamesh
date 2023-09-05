@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webカメラの表示</title>
+</head>
+<body>
+  <video id="webcam" autoplay></video>
+
+  <script>
+    async function initCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const videoElement = document.getElementById('webcam');
+        videoElement.srcObject = stream;
+      } catch (error) {
+        console.error('カメラのビデオストリームを取得できませんでした。', error);
+      }
+    }
+
+    window.onload = () => {
+      initCamera();
+    };
+  </script>
+</body>
+</html>
